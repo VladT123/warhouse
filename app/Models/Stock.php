@@ -2,18 +2,22 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class Stock extends Model
+class Stock extends Pivot
 {
-    protected $primaryKey = ['product_id', 'warehouse_id'];
-    public $incrementing = false;
+    protected $table = 'stocks';
 
-    public function product() {
-        return $this->belongsTo(Product::class);
-    }
+    // If you need timestamps (unlikely for stock tracking)
+    public $timestamps = false;
 
-    public function warehouse() {
-        return $this->belongsTo(Warehouse::class);
-    }
+    // The pivot attributes
+    protected $fillable = [
+        'product_id',
+        'warehouse_id',
+        'stock'
+    ];
+
 }
