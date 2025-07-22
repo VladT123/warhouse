@@ -90,7 +90,7 @@ class OrderService {
                     if ($countDifference < 0) {
                         // Если нового товара больше - проверяем наличие
                         if ($currentStock < abs($countDifference)) {
-                            throw new Exception("Недостаточно товара: {$item['product_id']}");
+                            throw new Exception("Недостаточно товара");
                         }
                         $stockChange = -abs($countDifference); // отрицательное значение для уменьшения остатка
                     } else {
