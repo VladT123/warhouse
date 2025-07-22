@@ -77,8 +77,9 @@ class OrderController extends Controller {
             ]);
             return redirect(route('orders.index', absolute: false));
         } catch (Exception $e) {
-            return response()->json(['error' => $e->getMessage()], 400);
-        }
+            return back()
+                ->withInput()
+                ->withErrors(['error' => $e->getMessage()]);        }
     }
 
     public function cancel(Order $order) {
@@ -86,8 +87,9 @@ class OrderController extends Controller {
             $this->orderService->cancelOrder($order);
             return redirect(route('orders.index', absolute: false));
         } catch (Exception $e) {
-            return response()->json(['error' => $e->getMessage()], 400);
-        }
+            return back()
+                ->withInput()
+                ->withErrors(['error' => $e->getMessage()]);        }
     }
 
     public function resume(Order $order) {
@@ -95,7 +97,8 @@ class OrderController extends Controller {
             $this->orderService->resumeOrder($order);
             return redirect(route('orders.index', absolute: false));
         } catch (Exception $e) {
-            return response()->json(['error' => $e->getMessage()], 400);
-        }
+            return back()
+                ->withInput()
+                ->withErrors(['error' => $e->getMessage()]);        }
     }
 }

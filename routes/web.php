@@ -6,7 +6,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StockMovementController;
 use App\Http\Controllers\WarehouseController;
 use Illuminate\Support\Facades\Route;
-
+Route::redirect('/', '/orders');
 Route::get('/warehouses', [WarehouseController::class, 'index'])->name('warehouses.index');
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 

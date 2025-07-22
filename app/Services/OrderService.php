@@ -215,7 +215,8 @@ class OrderService {
             'warehouse_id' => $order->warehouse_id,
             'change' => $change,
             'reason' => $type,
-            'order_id' => $order->id
+            'order_id' => $order->id,
+            'created_at' => now(),
         ]);
     }
 }

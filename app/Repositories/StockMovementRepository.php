@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Models\StockMovement;
 use App\Models\Warehouse;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Carbon\Carbon;
 
 class StockMovementRepository {
     /**
@@ -35,12 +36,12 @@ class StockMovementRepository {
 
         // Фильтр по начальной дате периода
         if (!empty($filters['date_from'])) {
-            $query->where('created_at', '>=', $filters['date_from']);
+            $query->where('created_at', '>=', Carbon::parse($filters['date_from'])->startOfDay());
         }
 
         // Фильтр по конечной дате периода
         if (!empty($filters['date_to'])) {
-            $query->where('created_at', '<=', $filters['date_to']);
+            $query->where('created_at', '<=', Carbon::parse($filters['date_to'])->endOfDay());
         }
 
         // Возвращаем результат с пагинацией

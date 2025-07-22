@@ -47,6 +47,7 @@
     <table>
         <thead>
         <tr>
+            <th>Дата</th>
             <th>Товар</th>
             <th>Склад</th>
             <th>Изменение</th>
@@ -57,6 +58,7 @@
         <tbody>
         @foreach($movements as $movement)
             <tr>
+                <td>{{ $movement->created_at}}</td>
                 <td>{{ $movement->product->name }}</td>
                 <td>{{ $movement->warehouse->name }}</td>
                 <td>{{ $movement->change > 0 ? '+' : '' }}{{ $movement->change }}</td>

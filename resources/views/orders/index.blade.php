@@ -59,7 +59,6 @@
         </tbody>
     </table>
 
-    {{ $orders->appends(request()->query())->links() }}
-
+    {{ $orders->appends(request()->query())->links('vendor.pagination.simple-bootstrap-4') }}
     <a href="{{ route('orders.create') }}">Создать новый заказ</a>
 @endsection
