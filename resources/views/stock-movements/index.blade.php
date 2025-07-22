@@ -72,6 +72,5 @@
         @endforeach
         </tbody>
     </table>
-
-    {{ $movements->appends(request()->query())->links() }}
+    {{ $movements->appends(request()->query())->links('vendor.pagination.simple-bootstrap-4') }}
 @endsection
